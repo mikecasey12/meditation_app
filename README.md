@@ -1,16 +1,10 @@
-# meditation_app
+# Meditation App (Dribbble Design)
 
-A new Flutter project.
+An Application User Interface gotten/inspired from a dribbble design
 
-## Getting Started
+## Get Design
 
-This project is a starting point for a Flutter application.
+Design can be gotten from the link below.
 
-A few resources to get you started if this is your first Flutter project:
+- [Dribbble Design](https://dribbble.com/shots/21117930-Meditation-app)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
