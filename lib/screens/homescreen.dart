@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:meditation_app/models/dummy_data.dart';
+import 'package:meditation_app/theme/theme_manager.dart';
 import 'package:meditation_app/widget/most_playing_music_tile.dart';
 import 'package:meditation_app/widget/scrolling_button.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isDark = context.watch<ThemeManager>().isDark;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Hello, Michael'),
@@ -33,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: size.width * 0.12,
             margin: const EdgeInsets.only(right: 15),
             decoration: BoxDecoration(
-                color: Colors.deepPurple[100],
+                color: isDark ? Colors.grey[800] : Colors.deepPurple[100],
                 borderRadius: BorderRadius.circular(15)),
             child: const Center(
               child: FaIcon(FontAwesomeIcons.solidBell),
@@ -51,8 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   currentIndex: currentIndex,
                   musicType: _musicType,
                   switchIndexFn: switchIndexFn,
-                  backgroundColor: Colors.deepPurple[100]!,
-                  selectedColor: Colors.deepPurple[200]!),
+                  backgroundColor:
+                      isDark ? Colors.grey[800]! : Colors.deepPurple[100]!,
+                  selectedColor:
+                      isDark ? Colors.grey[600]! : Colors.deepPurple[200]!),
               const Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text(
@@ -83,14 +88,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(15)),
                               child: const Center(
-                                child: FaIcon(FontAwesomeIcons.cloud),
+                                child: FaIcon(
+                                  FontAwesomeIcons.cloud,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 25),
                             const Text(
                               'Best Insomnia',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500),
                             ),
                             Text(
                               'Story',
@@ -101,7 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             const Text(
                               '32 min',
                               style: TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.w600),
+                                  color: Colors.black,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
@@ -124,14 +136,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(15)),
                               child: const Center(
-                                child: FaIcon(FontAwesomeIcons.handSparkles),
+                                child: FaIcon(
+                                  FontAwesomeIcons.handSparkles,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 25),
                             const Text(
                               'Sleep at Ease',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500),
                             ),
                             Text(
                               'Music',
@@ -142,7 +159,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             const Text(
                               '54 min',
                               style: TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.w600),
+                                  color: Colors.black,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
@@ -173,6 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'Deep Sleep',
                 trailingTitle: '32 min',
                 color: Colors.pink[200]!,
+                isDark: isDark,
               ),
               const SizedBox(height: 5),
               MostPlayingMusicTile(
@@ -181,6 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'Self healing',
                 trailingTitle: '52 min',
                 color: Colors.green[200]!,
+                isDark: isDark,
               ),
               const SizedBox(height: 5),
               MostPlayingMusicTile(
@@ -189,6 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'Soothing Music',
                 trailingTitle: '40 min',
                 color: Colors.orange[200]!,
+                isDark: isDark,
               ),
               const SizedBox(height: 5),
               MostPlayingMusicTile(
@@ -197,6 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'Blessing My Soul with Goodness',
                 trailingTitle: '40 min',
                 color: Colors.red[200]!,
+                isDark: isDark,
               ),
               SizedBox(
                 height: size.height * 0.1,

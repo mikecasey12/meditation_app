@@ -8,6 +8,7 @@ class MostPlayingMusicTile extends StatelessWidget {
   final IconData icon;
   final Color color;
   final Color textColor;
+  final bool isDark;
   const MostPlayingMusicTile(
       {super.key,
       required this.icon,
@@ -15,13 +16,14 @@ class MostPlayingMusicTile extends StatelessWidget {
       required this.title,
       required this.trailingTitle,
       required this.color,
+      required this.isDark,
       this.textColor = Colors.grey});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ListTile(
-      tileColor: Colors.deepPurple[50],
+      tileColor: isDark ? Colors.grey[850] : Colors.deepPurple[50],
       contentPadding:
           const EdgeInsets.only(top: 15, bottom: 15, left: 25, right: 25),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:meditation_app/models/dummy_data.dart';
 import 'package:meditation_app/models/multi_tile_model.dart';
+import 'package:meditation_app/theme/theme_manager.dart';
 
 import 'package:meditation_app/widget/most_playing_music_tile.dart';
 import 'package:meditation_app/widget/scrolling_button.dart';
+import 'package:provider/provider.dart';
 
 class SleepMusicScreen extends StatefulWidget {
   const SleepMusicScreen({super.key});
@@ -30,6 +32,7 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isDark = context.watch<ThemeManager>().isDark;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sounds'),
@@ -39,7 +42,7 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
             width: size.width * 0.12,
             margin: const EdgeInsets.only(right: 15),
             decoration: BoxDecoration(
-                color: Colors.deepPurple[100],
+                color: isDark ? Colors.grey[800] : Colors.deepPurple[100],
                 borderRadius: BorderRadius.circular(15)),
             child: const Center(
               child: FaIcon(FontAwesomeIcons.magnifyingGlass),
@@ -92,14 +95,19 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15)),
                             child: const Center(
-                              child: FaIcon(FontAwesomeIcons.water),
+                              child: FaIcon(
+                                FontAwesomeIcons.water,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 25),
                           const Text(
                             'Best Insomnia',
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w500),
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
                           ),
                           Text(
                             'Waves, wind, seagulls',
@@ -129,14 +137,19 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15)),
                             child: const Center(
-                              child: FaIcon(FontAwesomeIcons.tree),
+                              child: FaIcon(
+                                FontAwesomeIcons.tree,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 25),
                           const Text(
                             'Forest',
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w500),
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
                           ),
                           Text(
                             'Bird, rain, tree, cave',
@@ -188,7 +201,9 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
                               ? Border.all(
                                   width: 1.5, color: Colors.deepPurpleAccent)
                               : null,
-                          color: Colors.deepPurple[100],
+                          color: isDark
+                              ? Colors.grey[800]
+                              : Colors.deepPurple[100],
                           borderRadius: BorderRadius.circular(25)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -231,6 +246,7 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
                 title: 'Mix',
                 trailingTitle: '00:00',
                 color: Colors.deepPurple[100]!,
+                isDark: isDark,
                 textColor: Colors.white70,
               ),
               borderRadius: BorderRadius.circular(25)),

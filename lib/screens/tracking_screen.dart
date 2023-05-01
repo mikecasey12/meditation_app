@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:meditation_app/theme/theme_manager.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TrackingScreen extends StatefulWidget {
@@ -20,6 +22,7 @@ class _TrackingScreenState extends State<TrackingScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isDark = context.watch<ThemeManager>().isDark;
     return Scaffold(
       appBar: AppBar(),
       body: SizedBox(
@@ -65,14 +68,19 @@ class _TrackingScreenState extends State<TrackingScreen> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
                           child: const Center(
-                            child: FaIcon(FontAwesomeIcons.github),
+                            child: FaIcon(
+                              FontAwesomeIcons.github,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 25),
                         const Text(
                           'Michael Ikebude',
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w500),
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
                         ),
                         Text(
                           'Mobile Dev',
@@ -102,7 +110,10 @@ class _TrackingScreenState extends State<TrackingScreen> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
                           child: const Center(
-                            child: FaIcon(FontAwesomeIcons.rss),
+                            child: FaIcon(
+                              FontAwesomeIcons.rss,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 25),
@@ -131,7 +142,7 @@ class _TrackingScreenState extends State<TrackingScreen> {
                 onPressed: () {
                   _launchUrl();
                 },
-                color: Colors.black87,
+                color: isDark ? Colors.deepPurple : Colors.black87,
                 padding: const EdgeInsets.all(25),
                 child: const Text(
                   'Connect with Me',
